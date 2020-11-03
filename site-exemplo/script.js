@@ -45,18 +45,14 @@ let repeticoes = 1
             numero = numeroModa
             
         }
-        verificar(repeticoes, numero)
+        verificar(repeticoes)
     }
-    function verificar(vezesRepeticoes, vezesNumero) {
+    function verificar(vezesRepeticoes) {
         if (vezesRepeticoes > 1) {
-            let repeticoesFinal = repeticoes
-            let numeroFinal = numero
-            moda.innerHTML = `A moda é ${numeroFinal} e se repetiu ${repeticoesFinal} vezes.`
+            moda.innerHTML = `A moda é ${numero} e se repetiu ${repeticoes} vezes.`
         } else if (vezesRepeticoes == 1) {
             moda.innerHTML = `Nenhum número se repete.`
-        } else if (vezesRepeticoes == repeticoesFinal && vezesNumero != numeroFinal) {
-            moda.innerHTML += `A moda é ${numero} e se repetiu ${repeticoes} vezes.`
-        }
+        } 
     }
 
 

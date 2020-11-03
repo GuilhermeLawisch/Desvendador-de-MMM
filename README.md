@@ -1,2 +1,5 @@
 # Desvendador de MMM
- Encontra os valores de Moda, Média e Mediana
+
+ Encontra os valores de Moda, Média e Mediana.
+
+ Repositório criado

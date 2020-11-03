@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desvendador de MMM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="paginaPrincipal">
+        <header>
+            <h1>Desvendador de MMM</h1>
+            <p class="introducao">Este site foi criado para encontrar o valor de <b>Moda</b>, <b>Média</b> e <b>Mediana</b>.</p>
+            <p class="comoFunciona">Digite os valores neste campo, e adicione um de cada vez.</p>
+        </header>
+        <section>
+            <div id="dadosIniciais">
+                <input type="number" name="nomeInicial" id="inicio" min="0" max="1000">
+                <input type="button" id="botaoAdicionar" value="Adicionar" onclick="adicionar()">
+            </div>
+            <div id="valores">
+                <p>{<a id="conjunto"></a>}</p> 
+            </div>
+            <div>
+                <input id="botaoCalcular" type="button" value="Calcular" onclick="calculo()">
+            </div>
+            <div id="respostas">
+                <p class="res">Moda:&nbsp;<a id="moda" class="respostas"></a></p> 
+                <p class="res">Média:&nbsp;<a id="media" class="respostas"></a></p> 
+                <p class="res">Mediana:&nbsp;<a id="mediana" class="respostas"></a></p> 
+            </div>
+        </section>
+    </div>
+    <footer>
+        <p>by GuilhermeLawisch</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

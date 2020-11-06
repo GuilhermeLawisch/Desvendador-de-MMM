@@ -26,12 +26,17 @@ let tamanho = conj.length
 
 
 //MODA
+let numeroDaModa = []
 let repeticoesModa = 1
-let numeroModa = 0
 let repeticoes = 1
+let repeticoesFinal = -1
+let numeroModa = -1
+let numero = -1
+let numeroFinal = -1
+
 
     for (let posicao1 in conj) {
-        
+    
         repeticoesModa = 0
         for (let posicao2 in conj) {
             
@@ -45,12 +50,21 @@ let repeticoes = 1
             numero = numeroModa
             
         }
-        verificar(repeticoes)
+        verificar(repeticoes, numero)
     }
-    function verificar(vezesRepeticoes) {
-        if (vezesRepeticoes > 1) {
-            moda.innerHTML = `A moda é ${numero} e se repetiu ${repeticoes} vezes.`
-        } else if (vezesRepeticoes == 1) {
+    function verificar(vezesRepeticoes, vezesNumero) {
+        if (Number(vezesRepeticoes) > 1 || Number(vezesNumero) != -1) {
+            repeticoesFinal = vezesRepeticoes
+            numeroFinal = vezesNumero
+            numeroDaModa.push(vezesNumero)
+            moda.innerHTML = `A moda é ${numeroFinal} e se repetiu ${repeticoesFinal} vezes.`
+            console.log(repeticoesFinal)
+        } else if (Number(vezesRepeticoes) == Number(repeticoesFinal) && Number(vezesNumero) != Number(numeroFinal)) {    
+            console.log('opcao2')
+            numeroDaModa.push(vezesNumero)
+            moda.innerHTML = `A moda tem os valores ${numeroDaModa} e se repetiram ${repeticoes} vezes.`
+        } else if (Number(vezesRepeticoes) == 1 || Number(vezesNumero) != -1) {
+            console.log('opcao3')
             moda.innerHTML = `Nenhum número se repete.`
         } 
     }

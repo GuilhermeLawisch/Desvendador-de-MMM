@@ -24,63 +24,36 @@ conj.sort(function(a, b) {
 })
 let tamanho = conj.length
 
-
-//MODA
-let numeroDaModa = []
-let repeticoesModa = 1
-let repeticoes = 1
-let repeticoesFinal = -1
-let numeroModa = -1
-let numero = -1
-let numeroFinal = -1
-
-
-    for (let posicao1 in conj) {
-    
-        repeticoesModa = 0
-        for (let posicao2 in conj) {
-            
-            if (conj[posicao1] == conj[posicao2]) {
-                repeticoesModa++;
-                numeroModa = conj[posicao1];
-            }
+//MODA 
+let repeticoes = 0;
+let posicao1 = 0;
+while ( posicao1 <= tamanhoAjustado ) {
+    var repeticoesModa = 0;
+    let posicao2 = 0;
+    while ( posicao2 <= tamanhoAjustado ) {
+        if ( conj[posicao1] == conj[posicao2] ) {
+            repeticoesModa++;
+            var numeroModa = conj[posicao1];
         }
-        if (repeticoesModa > repeticoes) {
-            repeticoes = repeticoesModa
-            numero = numeroModa
-            
-        }
-        verificar(repeticoes, numero)
-    }
-    function verificar(vezesRepeticoes, vezesNumero) {
-        if (Number(vezesRepeticoes) > 1 || Number(vezesNumero) != -1) {
-            repeticoesFinal = vezesRepeticoes
-            numeroFinal = vezesNumero
-            numeroDaModa.push(vezesNumero)
-            moda.innerHTML = `A moda é ${numeroFinal} e se repetiu ${repeticoesFinal} vezes.`
-            console.log(repeticoesFinal)
-        } else if (Number(vezesRepeticoes) == Number(repeticoesFinal) && Number(vezesNumero) != Number(numeroFinal)) {    
-            console.log('opcao2')
-            numeroDaModa.push(vezesNumero)
-            moda.innerHTML = `A moda tem os valores ${numeroDaModa} e se repetiram ${repeticoes} vezes.`
-        } else if (Number(vezesRepeticoes) == 1 || Number(vezesNumero) != -1) {
-            console.log('opcao3')
-            moda.innerHTML = `Nenhum número se repete.`
-        } 
-    }
+        posicao2++;    
+    };
+    posicao1++;
+    if ( numeroModa != numero && repeticoesModa > repeticoes ) {
+        moda.innerHTML = `A moda é ${numeroModa} pois apareceu ${repeticoesModa} vezes.`
+    } else if ( repeticoesModa == 1 && repeticoesModa >= repeticoes ) {
+        moda.innerHTML = `Nenhum número se repete.`
+    } else if ( numeroModa != numero && repeticoesModa == repeticoes) {
+        moda.innerHTML += `A moda é ${numeroModa} pois apareceu ${repeticoesModa} vezes.`
+    } 
+    if ( repeticoesModa > repeticoes) {
+        repeticoes = repeticoesModa;
+    } 
+    var numero = numeroModa;
+}
 
-
-/*
-if (testeRepeticao(numeroModa)) {
-            numeroDaModa.push(numeroModa)
-        }
-
-if (repeticoesModa > repeticoes) {
-numeroDaModa.push(numeroModa, repeticoesModa)
-*/
 
 //MÉDIA
-let soma = 0
+    let soma = 0
     for (let numero in conj) {
         soma += conj[numero]
     }

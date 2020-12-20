@@ -22,9 +22,11 @@ function calculo() {
 conj.sort(function(a, b) {
     return a - b;
 })
-let tamanho = conj.length
+var tamanho = conj.length;
+var tamanhoAjustado = tamanho - 1
 
 //MODA 
+let numeroDaModa = [];
 let repeticoes = 0;
 let posicao1 = 0;
 while ( posicao1 <= tamanhoAjustado ) {
@@ -39,11 +41,18 @@ while ( posicao1 <= tamanhoAjustado ) {
     };
     posicao1++;
     if ( numeroModa != numero && repeticoesModa > repeticoes ) {
-        moda.innerHTML = `A moda é ${numeroModa} pois apareceu ${repeticoesModa} vezes.`
+        numeroDaModa[0] = numeroModa
+        moda.innerHTML = `É unimodal, com o valor ${numeroDaModa} que aparecereu ${repeticoesModa} vezes.`
     } else if ( repeticoesModa == 1 && repeticoesModa >= repeticoes ) {
         moda.innerHTML = `Nenhum número se repete.`
     } else if ( numeroModa != numero && repeticoesModa == repeticoes) {
-        moda.innerHTML += `A moda é ${numeroModa} pois apareceu ${repeticoesModa} vezes.`
+        numeroDaModa.push(numeroModa)
+        let tamanhoModa = numeroDaModa.length
+        if ( tamanhoModa == 2 ) {
+            moda.innerHTML = `É bimodal, com os valores (${numeroDaModa}) que apareceram ${repeticoesModa} vezes.`
+        } else {
+            moda.innerHTML = `É multimodal, com os valores (${numeroDaModa}) que apareceram ${repeticoesModa} vezes.`
+        }
     } 
     if ( repeticoesModa > repeticoes) {
         repeticoes = repeticoesModa;
@@ -58,7 +67,11 @@ while ( posicao1 <= tamanhoAjustado ) {
         soma += conj[numero]
     }
     let resMedia = soma/tamanho
-    media.innerHTML = `A média dos valores é ${resMedia}.`
+    if ( Number.isInteger(resMedia) == true ) {
+        media.innerHTML = `A média dos valores é ${resMedia}.`
+    } else {
+        media.innerHTML = `A média dos valores é ${resMedia.toFixed(2).replace('.',',')}.`
+    }
 
 
 //MEDIANA
@@ -69,15 +82,5 @@ while ( posicao1 <= tamanhoAjustado ) {
     } else {                    // se for impar, tem que somente pegar o valor do meio
         let valorMediana = tamanho/2 -.5
         mediana.innerHTML = `O conjunto é ímpar, e a mediana é ${conj[valorMediana]}.`
-    }
-
-}
-
-function testeRepeticao(numero) {
-    let teste = numeroDaModa.indexOf(numero)
-    if (teste == -1) {
-        return false;
-    } else {
-        return true;
     }
 }
